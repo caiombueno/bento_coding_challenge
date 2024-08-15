@@ -1,20 +1,37 @@
+import 'dart:developer' as dev;
+import 'dart:ui';
+import 'package:bento_coding_challenge/src/app/app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // https://docs.flutter.dev/testing/errors
+  _registerErrorHandlers();
+
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+void _registerErrorHandlers() {
+  // Show some error UI if any uncaught exception happens
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.presentError(details);
+    dev.log(details.exceptionAsString(), stackTrace: details.stack);
+  };
+  // Handle errors from the underlying platform/OS
+  PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+    dev.log(error.toString(), stackTrace: stack, error: error);
+    return true;
+  };
+  // Show some error UI when any widget in the app fails to build
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    dev.log(details.exceptionAsString(), stackTrace: details.stack);
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: const Text('An error occurred'),
       ),
+      body: Center(child: Text(details.toString())),
     );
-  }
+  };
 }
