@@ -1,5 +1,5 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
-import 'package:bento_coding_challenge/src/features/home/home_screen.dart';
+import 'package:bento_coding_challenge/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 
 class MainApp extends StatelessWidget {
@@ -20,8 +20,8 @@ class MainApp extends StatelessWidget {
       // labelMedium:
     ));
 
-    return MaterialApp(
-      home: const HomeScreen(),
+    return MaterialApp.router(
+      routerConfig: router,
       theme: theme,
     );
   }
