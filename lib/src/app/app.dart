@@ -8,21 +8,19 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = ThemeData(
-        textTheme: TextTheme(
-      titleSmall: const TextStyle(
-        color: Colors.black,
-        fontSize: Sizes.p16,
+      textTheme: TextTheme(
+        titleSmall: const TextStyle(
+          color: Colors.black,
+          fontSize: Sizes.p16,
+        ),
+        labelLarge: TextStyle(
+          color: Colors.grey[700],
+          fontWeight: FontWeight.normal,
+        ),
+        // labelMedium:
       ),
-      labelLarge: TextStyle(
-        color: Colors.grey[700],
-        fontWeight: FontWeight.normal,
-      ),
-      // labelMedium:
-    ));
-
-    return MaterialApp.router(
-      routerConfig: router,
-      theme: theme,
     );
+
+    return MaterialApp.router(routerConfig: router, theme: theme);
   }
 }
