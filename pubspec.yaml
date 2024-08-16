@@ -10,6 +10,7 @@ dependencies:
   convex_bottom_bar: ^3.2.0
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.10+1
   font_awesome_flutter: ^10.7.0
   go_router: ^14.2.3
 
@@ -24,3 +25,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/profile_pic.png
+    - assets/svg/groceries.svg
+    - assets/svg/local_shop.svg

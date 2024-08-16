@@ -1,5 +1,5 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
-import 'package:bento_coding_challenge/src/features/home/components/delivery_header.dart';
+import 'package:bento_coding_challenge/src/features/home/components/components.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,6 +23,8 @@ class HomeView extends StatelessWidget {
           child: Column(
             children: [
               DeliveryHeader(),
+              gapH12,
+              OrderAgainAndLocalShopButtonsRow(),
             ],
           ),
         ),

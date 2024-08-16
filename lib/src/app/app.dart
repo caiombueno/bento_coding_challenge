@@ -8,6 +8,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = ThemeData(
+      primaryColor: const Color(0xff10365A),
+      colorScheme: const ColorScheme.light(
+        primary: Color(0xff10365A),
+        secondary: Color(0xFF56E39C),
+      ),
       textTheme: TextTheme(
         titleSmall: const TextStyle(
           color: Colors.black,
