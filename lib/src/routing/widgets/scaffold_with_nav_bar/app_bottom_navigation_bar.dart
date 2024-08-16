@@ -52,10 +52,4 @@ enum _TabItem {
         _TabItem.cart => 'Cart'.hardcoded,
         _TabItem.account => 'Account'.hardcoded,
       };
-
-  static List<String> get labels =>
-      _TabItem.values.map((e) => e.label).toList();
-
-  static List<IconData> get icons =>
-      _TabItem.values.map((e) => e.iconData).toList();
 }

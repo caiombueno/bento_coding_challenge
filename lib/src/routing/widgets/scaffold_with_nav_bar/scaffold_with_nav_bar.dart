@@ -1,5 +1,4 @@
 import 'package:bento_coding_challenge/src/routing/widgets/scaffold_with_nav_bar/app_bottom_navigation_bar.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
