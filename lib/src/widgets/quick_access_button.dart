@@ -38,12 +38,15 @@ class _RoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: context.theme.colorScheme.secondary,
-          borderRadius: BorderRadius.circular(Sizes.p12),
+      child: AspectRatio(
+        aspectRatio: 2 / 1,
+        child: Container(
+          decoration: BoxDecoration(
+            color: context.theme.colorScheme.secondary,
+            borderRadius: BorderRadius.circular(Sizes.p12),
+          ),
+          child: child,
         ),
-        child: child,
       ),
     );
   }
@@ -69,9 +72,19 @@ class _QuickAccessButtonContent extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Flexible(
-            child: Padding(
-                padding: labelPadding, child: _LabelText(label: label))),
-        if (image != null) ...[Flexible(child: image)],
+            child: Center(
+          child:
+              Padding(padding: labelPadding, child: _LabelText(label: label)),
+        )),
+        if (image != null) ...[
+          Flexible(
+            child: FractionallySizedBox(
+              widthFactor: 0.8,
+              heightFactor: 0.8,
+              child: image,
+            ),
+          )
+        ],
       ],
     );
   }
@@ -84,15 +97,9 @@ class _LabelText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      label,
-      textAlign: TextAlign.start,
-      maxLines: 2,
-      style: const TextStyle(
-        overflow: TextOverflow.ellipsis,
-        fontSize: Sizes.p16,
-        fontWeight: FontWeight.bold,
-      ),
-    );
+    return Text(label,
+        textAlign: TextAlign.start,
+        maxLines: 2,
+        style: Theme.of(context).textTheme.titleMedium);
   }
 }
