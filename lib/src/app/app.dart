@@ -13,10 +13,30 @@ class MainApp extends StatelessWidget {
         primary: Color(0xff10365A),
         secondary: Color(0xFF56E39C),
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xff10365A),
+          foregroundColor: const Color(0xFF56E39C),
+          textStyle: const TextStyle(
+            fontSize: Sizes.p16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
       textTheme: TextTheme(
         titleSmall: const TextStyle(
           color: Colors.black,
           fontSize: Sizes.p16,
+        ),
+        titleMedium: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Color(0xff10365A),
+          fontSize: Sizes.p16,
+        ),
+        titleLarge: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Color(0xff10365A),
+          fontSize: Sizes.p20,
         ),
         labelLarge: TextStyle(
           color: Colors.grey[700],

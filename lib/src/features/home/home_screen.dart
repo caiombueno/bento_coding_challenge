@@ -1,6 +1,7 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
 import 'package:bento_coding_challenge/src/features/home/components/components.dart';
 import 'package:flutter/material.dart';
+import 'components/advertising/advertising.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -21,10 +22,19 @@ class HomeView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(Sizes.p16),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               DeliveryHeader(),
-              gapH12,
+              gapH32,
               OrderAgainAndLocalShopButtonsRow(),
+              gapH32,
+              AdvertisingPageView(
+                advertisings: [
+                  AvocadoAdvertising(),
+                  AvocadoAdvertising(),
+                  AvocadoAdvertising(),
+                ],
+              ),
             ],
           ),
         ),
