@@ -25,7 +25,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/profile_pic.png
-    - assets/svg/groceries.svg
-    - assets/svg/local_shop.svg
-    - assets/images/avocado.png
+    - assets/images/
+    - assets/svg/
+    - assets/svg/product_categories/
