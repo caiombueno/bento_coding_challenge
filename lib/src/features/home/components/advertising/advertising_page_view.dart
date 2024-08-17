@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class AdvertisingPageView extends StatefulWidget {
-  const AdvertisingPageView({super.key, required this.advertisings});
+  const AdvertisingPageView(
+      {super.key,
+      required this.advertisings,
+      this.padding = const EdgeInsets.symmetric(horizontal: Sizes.p16)});
   final List<Widget> advertisings;
+  final EdgeInsetsGeometry padding;
 
   @override
   State<AdvertisingPageView> createState() => _AdvertisingPageViewState();
@@ -39,10 +43,8 @@ class _AdvertisingPageViewState extends State<AdvertisingPageView> {
             controller: _pageViewController,
             itemCount: advertisingsLength,
             itemBuilder: (_, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Sizes.p8),
-                child: _advertisings[index],
-              );
+              final advertising = _advertisings[index];
+              return Padding(padding: widget.padding, child: advertising);
             },
           ),
         ),
