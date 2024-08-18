@@ -1,6 +1,7 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
 import 'package:bento_coding_challenge/src/routing/routing.dart';
 import 'package:flutter/material.dart';
+import 'theme_extensions/theme_extensions.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -103,85 +104,5 @@ class MainApp extends StatelessWidget {
     );
 
     return MaterialApp.router(routerConfig: router, theme: theme);
-  }
-}
-
-class AppTextTheme extends ThemeExtension<AppTextTheme> {
-  const AppTextTheme({
-    this.productCardName,
-    this.productStrikethroughFullPrice,
-  });
-  final TextStyle? productCardName;
-  final TextStyle? productStrikethroughFullPrice;
-
-  @override
-  ThemeExtension<AppTextTheme> copyWith({
-    TextStyle? productCardName,
-    TextStyle? productStrikethroughFullPrice,
-  }) =>
-      AppTextTheme(
-        productCardName: productCardName ?? this.productCardName,
-        productStrikethroughFullPrice:
-            productStrikethroughFullPrice ?? this.productStrikethroughFullPrice,
-      );
-
-  @override
-  ThemeExtension<AppTextTheme> lerp(
-      covariant ThemeExtension<AppTextTheme>? other, double t) {
-    if (other is! AppTextTheme) return this;
-
-    return AppTextTheme(
-      productCardName: TextStyle.lerp(
-        productCardName,
-        other.productCardName,
-        t,
-      ),
-      productStrikethroughFullPrice: TextStyle.lerp(
-        productStrikethroughFullPrice,
-        other.productStrikethroughFullPrice,
-        t,
-      ),
-    );
-  }
-}
-
-class AppButtonTheme extends ThemeExtension<AppButtonTheme> {
-  const AppButtonTheme({
-    this.productCardAddIconButton,
-    this.categoryIconButton,
-  });
-  final ButtonStyle? productCardAddIconButton;
-  final ButtonStyle? categoryIconButton;
-
-  @override
-  ThemeExtension<AppButtonTheme> copyWith({
-    ButtonStyle? productCardAddIconButton,
-    ButtonStyle? categoryIconButton,
-  }) =>
-      AppButtonTheme(
-        productCardAddIconButton:
-            productCardAddIconButton ?? this.productCardAddIconButton,
-        categoryIconButton: categoryIconButton ?? this.categoryIconButton,
-      );
-
-  @override
-  ThemeExtension<AppButtonTheme> lerp(
-    covariant ThemeExtension<AppButtonTheme>? other,
-    double t,
-  ) {
-    if (other is! AppButtonTheme) return this;
-
-    return AppButtonTheme(
-      productCardAddIconButton: ButtonStyle.lerp(
-        productCardAddIconButton,
-        other.productCardAddIconButton,
-        t,
-      ),
-      categoryIconButton: ButtonStyle.lerp(
-        categoryIconButton,
-        other.categoryIconButton,
-        t,
-      ),
-    );
   }
 }
