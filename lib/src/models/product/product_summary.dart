@@ -30,3 +30,12 @@ class ProductSummary extends ProductBase {
         productColorHex,
       ];
 }
+
+@JsonSerializable()
+class ProductSummaryList {
+  ProductSummaryList({required this.productSummaries});
+  final List<ProductSummary> productSummaries;
+
+  factory ProductSummaryList.fromJson(Map<String, dynamic> json) =>
+      _$ProductSummaryListFromJson(json);
+}

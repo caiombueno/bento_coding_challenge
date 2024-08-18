@@ -27,3 +27,15 @@ Map<String, dynamic> _$ProductSummaryToJson(ProductSummary instance) =>
       'overallRating': instance.overallRating,
       'productColorHex': instance.productColorHex,
     };
+
+ProductSummaryList _$ProductSummaryListFromJson(Map<String, dynamic> json) =>
+    ProductSummaryList(
+      productSummaries: (json['productSummaries'] as List<dynamic>)
+          .map((e) => ProductSummary.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$ProductSummaryListToJson(ProductSummaryList instance) =>
+    <String, dynamic>{
+      'productSummaries': instance.productSummaries,
+    };
