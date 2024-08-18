@@ -1,6 +1,7 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
 import 'package:bento_coding_challenge/src/models/models.dart';
 import 'package:bento_coding_challenge/src/utils/context_theme.dart';
+import 'package:bento_coding_challenge/src/utils/theme_extension_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -64,6 +65,7 @@ class _CategoryIconButton extends StatelessWidget {
     return IconButton(
       onPressed: () {},
       icon: SvgPicture.asset(category.svgAssetPath, fit: BoxFit.contain),
+      style: context.theme.appButtonTheme?.categoryIconButton,
     );
   }
 }
