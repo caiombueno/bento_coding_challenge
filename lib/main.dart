@@ -1,10 +1,14 @@
 import 'dart:developer' as dev;
 import 'dart:ui';
 import 'package:bento_coding_challenge/src/app/app.dart';
+import 'package:bento_coding_challenge/src/service_location/service_location.dart'
+    as sl;
 import 'package:flutter/material.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  sl.configureDependencies();
 
   // https://docs.flutter.dev/testing/errors
   _registerErrorHandlers();
