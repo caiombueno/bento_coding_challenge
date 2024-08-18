@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:bento_coding_challenge/src/features/home/home_screen.dart';
-import 'package:bento_coding_challenge/src/features/product_details/product_details_screen.dart';
+import 'package:bento_coding_challenge/src/features/product_details/product_details.dart';
 import 'package:bento_coding_challenge/src/models/models.dart';
 part 'app_router.g.dart';
 part 'routes.dart';

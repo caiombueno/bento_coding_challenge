@@ -1,25 +1,9 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
-import 'package:bento_coding_challenge/src/constants/asset_paths.dart';
 import 'package:bento_coding_challenge/src/features/product_details/components/components.dart';
+import 'package:bento_coding_challenge/src/features/product_details/product_details_screen/state_management/product_details_cubit.dart';
 import 'package:bento_coding_challenge/src/models/models.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-const productDetails = ProductDetails(
-  productId: '1',
-  productName: 'Organic Fresh Green Cabbage',
-  fullPrice: 8.15,
-  discountPercentage: 0.15,
-  productImageAssetPath: cabbagePngAssetPath,
-  overallRating: 4.5,
-  shopName: 'Alisha Mart',
-  productDescription: """
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac sem nec quam elementum luctus non vel orci. Nullam vehicula, sapien at dictum faucibus, lacus justo iaculis velit, vitae sollicitudin erat urna eu libero. Aliquam erat volutpat. Praesent vel velit eu felis cursus interdum. Fusce et eros bibendum, dignissim nunc sed, cursus nulla. Aenean vitae vehicula arcu, sed blandit lacus. Nullam fermentum, nisl nec viverra scelerisque, mauris libero scelerisque ex, eget cursus sem sapien in odio. Vestibulum euismod libero ac leo dignissim, in fermentum mauris hendrerit. Nam id tortor id justo tincidunt vehicula. Sed gravida arcu eu massa malesuada, quis fermentum elit volutpat. Vivamus ac orci nec ipsum tempus eleifend sed ut libero. Phasellus elementum, orci eu rhoncus ferment
-
-""",
-  tags: [ProductTag.vegetarian, ProductTag.halalFood, ProductTag.glutenFree],
-);
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({super.key, required this.productId});
@@ -27,12 +11,36 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ProductDetailsView();
+    return BlocProvider<ProductDetailsCubit>(
+      create: (context) => ProductDetailsCubit()..getProductDetails(productId),
+      child: const ProductDetailsView(),
+    );
   }
 }
 
 class ProductDetailsView extends StatelessWidget {
   const ProductDetailsView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
+      builder: (_, state) {
+        return switch (state) {
+          ProductDetailsLoading _ => const _ProductDetailsLoadingView(),
+          ProductDetailsError errorState =>
+            _ProductDetailsErrorView(errorState.exception),
+          ProductDetailsLoaded loadedState =>
+            _ProductDetailsLoadedView(loadedState.productDetails),
+        };
+      },
+    );
+  }
+}
+
+class _ProductDetailsLoadedView extends StatelessWidget {
+  const _ProductDetailsLoadedView(this.productDetails);
+
+  final ProductDetails productDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +59,6 @@ class ProductDetailsView extends StatelessWidget {
               ),
             ),
             Flexible(
-              flex: 1,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -70,7 +77,9 @@ class ProductDetailsView extends StatelessWidget {
                   ],
                   if (description != null) ...[
                     gapH12,
-                    ProductDetailsDescriptionSection(description: description),
+                    ProductDetailsDescriptionSection(
+                      description: description,
+                    ),
                   ],
                 ],
               ),
@@ -81,6 +90,29 @@ class ProductDetailsView extends StatelessWidget {
       bottomNavigationBar: ProductDetailsBottomSheet(
         fullPrice: productDetails.fullPrice,
         salePrice: productDetails.salePrice,
+      ),
+    );
+  }
+}
+
+class _ProductDetailsLoadingView extends StatelessWidget {
+  const _ProductDetailsLoadingView();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(body: Center(child: CircularProgressIndicator()));
+  }
+}
+
+class _ProductDetailsErrorView extends StatelessWidget {
+  const _ProductDetailsErrorView(this.exception);
+  final DomainException exception;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text(exception.getMessage(context)),
       ),
     );
   }
