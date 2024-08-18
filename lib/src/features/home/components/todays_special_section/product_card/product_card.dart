@@ -9,6 +9,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ProductCardContainer(
+        productId: product.productId,
         backgroundColorHexValue: product.productColorHex,
         child: ProductCardContent(
           fullPrice: product.fullPrice,

@@ -18,6 +18,12 @@ RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/',
               factory: $HomeRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: ':productId',
+                  factory: $ProductDetailsRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -66,6 +72,26 @@ extension $HomeRouteExtension on HomeRoute {
 
   String get location => GoRouteData.$location(
         '/',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $ProductDetailsRouteExtension on ProductDetailsRoute {
+  static ProductDetailsRoute _fromState(GoRouterState state) =>
+      ProductDetailsRoute(
+        productId: state.pathParameters['productId']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/${Uri.encodeComponent(productId)}',
       );
 
   void go(BuildContext context) => context.go(location);

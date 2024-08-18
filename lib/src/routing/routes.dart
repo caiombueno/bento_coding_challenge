@@ -1,4 +1,6 @@
 import 'package:bento_coding_challenge/src/features/home/home_screen.dart';
+import 'package:bento_coding_challenge/src/features/product_details/product_details_screen.dart';
+import 'package:bento_coding_challenge/src/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -39,4 +41,13 @@ class AccountRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const Placeholder();
+}
+
+class ProductDetailsRoute extends GoRouteData {
+  const ProductDetailsRoute({required this.productId});
+  final ProductId productId;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      ProductDetailsScreen(productId: productId);
 }

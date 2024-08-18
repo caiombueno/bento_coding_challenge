@@ -19,7 +19,11 @@ final GoRouter router = GoRouter(
 @TypedStatefulShellRoute<AppShellRouteData>(
   branches: [
     TypedStatefulShellBranch<HomeShellBranch>(
-      routes: [TypedGoRoute<HomeRoute>(path: '/')],
+      routes: [
+        TypedGoRoute<HomeRoute>(
+            path: '/',
+            routes: [TypedGoRoute<ProductDetailsRoute>(path: ':productId')]),
+      ],
     ),
     TypedStatefulShellBranch<DelasShellBranch>(
       routes: [TypedGoRoute<DelasRoute>(path: '/delas')],
