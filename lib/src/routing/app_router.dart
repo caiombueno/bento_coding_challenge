@@ -20,9 +20,9 @@ final GoRouter router = GoRouter(
   branches: [
     TypedStatefulShellBranch<HomeShellBranch>(
       routes: [
-        TypedGoRoute<HomeRoute>(
-            path: '/',
-            routes: [TypedGoRoute<ProductDetailsRoute>(path: ':productId')]),
+        TypedGoRoute<HomeRoute>(path: '/', routes: [
+          TypedGoRoute<ProductDetailsRoute>(path: 'product/:productId')
+        ]),
       ],
     ),
     TypedStatefulShellBranch<DelasShellBranch>(

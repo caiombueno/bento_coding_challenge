@@ -20,7 +20,7 @@ RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
               factory: $HomeRouteExtension._fromState,
               routes: [
                 GoRouteData.$route(
-                  path: ':productId',
+                  path: 'product/:productId',
                   factory: $ProductDetailsRouteExtension._fromState,
                 ),
               ],
@@ -91,7 +91,7 @@ extension $ProductDetailsRouteExtension on ProductDetailsRoute {
       );
 
   String get location => GoRouteData.$location(
-        '/${Uri.encodeComponent(productId)}',
+        '/product/${Uri.encodeComponent(productId)}',
       );
 
   void go(BuildContext context) => context.go(location);

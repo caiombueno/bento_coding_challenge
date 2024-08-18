@@ -1,6 +1,5 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
 import 'package:bento_coding_challenge/src/features/home/components/components.dart';
-import 'package:bento_coding_challenge/src/widgets/safe_area_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'components/advertising/advertising.dart';
 
@@ -19,8 +18,8 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const horizontalPadding = EdgeInsets.symmetric(horizontal: Sizes.p16);
-    return const SafeAreaScaffold(
-      body: SingleChildScrollView(
+    return const SafeArea(
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
