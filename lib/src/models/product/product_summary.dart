@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'product_summary.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class ProductSummary extends ProductBase {
   const ProductSummary({
     required super.productId,
@@ -31,7 +31,7 @@ class ProductSummary extends ProductBase {
       ];
 }
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class ProductSummaryList {
   ProductSummaryList({required this.productSummaries});
   final List<ProductSummary> productSummaries;

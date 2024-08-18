@@ -3,5 +3,5 @@ import 'package:fpdart/fpdart.dart';
 
 abstract class ProductDataSource {
   Future<Either<Exception, List<ProductSummary>>>
-      getDailySpecialProductSummaries();
+      getDailySpecialProductSummaryList();
 }

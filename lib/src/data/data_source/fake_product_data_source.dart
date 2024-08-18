@@ -31,7 +31,7 @@ class FakeProductDataSource implements ProductDataSource {
 
   @override
   Future<Either<Exception, List<ProductSummary>>>
-      getDailySpecialProductSummaries() async {
+      getDailySpecialProductSummaryList() async {
     try {
       // Simulate a network request
       final data = await Future.delayed(
