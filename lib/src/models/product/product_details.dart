@@ -1,6 +1,9 @@
 import 'package:bento_coding_challenge/src/models/product/product_base.dart';
 import 'package:bento_coding_challenge/src/models/product/product_tag.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'product_details.g.dart';
 
+@JsonSerializable(createToJson: false)
 class ProductDetails extends ProductBase {
   const ProductDetails({
     required super.productId,
@@ -19,6 +22,9 @@ class ProductDetails extends ProductBase {
   final String? productDescription;
 
   final List<ProductTag> tags;
+
+  factory ProductDetails.fromJson(Map<String, dynamic> json) =>
+      _$ProductDetailsFromJson(json);
 
   @override
   List<Object?> get props => [
