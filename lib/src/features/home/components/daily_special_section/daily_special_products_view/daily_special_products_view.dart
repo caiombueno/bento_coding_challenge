@@ -1,5 +1,5 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
-import 'package:bento_coding_challenge/src/features/home/components/todays_special_section/daily_special_products_view/state_management/daily_special_products_cubit.dart';
+import 'package:bento_coding_challenge/src/features/home/components/daily_special_section/daily_special_products_view/state_management/daily_special_products_cubit.dart';
 import 'package:bento_coding_challenge/src/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

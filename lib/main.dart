@@ -1,8 +1,7 @@
 import 'dart:developer' as dev;
 import 'dart:ui';
 import 'package:bento_coding_challenge/src/app/app.dart';
-import 'package:bento_coding_challenge/src/service_location/service_location.dart'
-    as sl;
+import 'package:bento_coding_challenge/service_location.dart' as sl;
 import 'package:flutter/material.dart';
 
 void main() {
