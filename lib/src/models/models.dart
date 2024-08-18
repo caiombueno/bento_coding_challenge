@@ -1,2 +1,2 @@
 export 'product_category.dart';
-export 'product.dart';
+export 'product/product.dart';

@@ -6,7 +6,7 @@ import 'package:bento_coding_challenge/src/utils/context_theme.dart';
 import 'package:bento_coding_challenge/src/utils/hardcoded_string.dart';
 import 'package:flutter/material.dart';
 
-const orange = Product(
+const orange = ProductSummary(
   productId: '1',
   productName: 'Orange',
   fullPrice: 4,
@@ -16,7 +16,7 @@ const orange = Product(
   productColorHex: 0xFFFFF3DE,
 );
 
-const cabbage = Product(
+const cabbage = ProductSummary(
   productId: '2',
   productName: 'Cabbage',
   fullPrice: 8,
