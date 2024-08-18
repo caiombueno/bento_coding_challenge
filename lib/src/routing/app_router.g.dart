@@ -8,6 +8,7 @@ part of 'app_router.dart';
 
 List<RouteBase> get $appRoutes => [
       $appShellRouteData,
+      $productDetailsRoute,
     ];
 
 RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
@@ -18,12 +19,6 @@ RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/',
               factory: $HomeRouteExtension._fromState,
-              routes: [
-                GoRouteData.$route(
-                  path: 'product/:productId',
-                  factory: $ProductDetailsRouteExtension._fromState,
-                ),
-              ],
             ),
           ],
         ),
@@ -72,26 +67,6 @@ extension $HomeRouteExtension on HomeRoute {
 
   String get location => GoRouteData.$location(
         '/',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-extension $ProductDetailsRouteExtension on ProductDetailsRoute {
-  static ProductDetailsRoute _fromState(GoRouterState state) =>
-      ProductDetailsRoute(
-        productId: state.pathParameters['productId']!,
-      );
-
-  String get location => GoRouteData.$location(
-        '/product/${Uri.encodeComponent(productId)}',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -160,6 +135,31 @@ extension $AccountRouteExtension on AccountRoute {
 
   String get location => GoRouteData.$location(
         '/account',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $productDetailsRoute => GoRouteData.$route(
+      path: '/product/:productId',
+      factory: $ProductDetailsRouteExtension._fromState,
+    );
+
+extension $ProductDetailsRouteExtension on ProductDetailsRoute {
+  static ProductDetailsRoute _fromState(GoRouterState state) =>
+      ProductDetailsRoute(
+        productId: state.pathParameters['productId']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/product/${Uri.encodeComponent(productId)}',
       );
 
   void go(BuildContext context) => context.go(location);

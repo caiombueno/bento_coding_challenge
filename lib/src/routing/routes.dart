@@ -1,8 +1,4 @@
-import 'package:bento_coding_challenge/src/features/home/home_screen.dart';
-import 'package:bento_coding_challenge/src/features/product_details/product_details_screen.dart';
-import 'package:bento_coding_challenge/src/models/models.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+part of 'app_router.dart';
 
 class HomeRoute extends GoRouteData {
   const HomeRoute();
@@ -43,6 +39,7 @@ class AccountRoute extends GoRouteData {
       const Placeholder();
 }
 
+@TypedGoRoute<ProductDetailsRoute>(path: '/product/:productId')
 class ProductDetailsRoute extends GoRouteData {
   const ProductDetailsRoute({required this.productId});
   final ProductId productId;
