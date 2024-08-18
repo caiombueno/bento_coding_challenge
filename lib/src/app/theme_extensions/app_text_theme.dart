@@ -7,6 +7,7 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
   });
   final TextStyle? productCardName;
   final TextStyle? productStrikethroughFullPrice;
+  // final TextStyle? productDetails
 
   @override
   ThemeExtension<AppTextTheme> copyWith({

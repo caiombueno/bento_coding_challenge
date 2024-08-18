@@ -14,3 +14,10 @@ class ProductCategoriesSvgAssetPaths {
   static const milk = '$_productCaregoritesAssetFolderPath/milk.svg';
   static const vegan = '$_productCaregoritesAssetFolderPath/vegan.svg';
 }
+
+class ProductTagsSvgAssetPaths {
+  static const _productTagsAssetFolderPath = 'assets/svg/product_tags';
+  static const glutenFree = '$_productTagsAssetFolderPath/gluten_free.svg';
+  static const halalFood = '$_productTagsAssetFolderPath/halal_food.svg';
+  static const vegetarian = '$_productTagsAssetFolderPath/vegetarian.svg';
+}

@@ -1,7 +1,7 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
 import 'package:bento_coding_challenge/src/models/models.dart';
 import 'package:bento_coding_challenge/src/routing/app_router.dart';
-import 'package:bento_coding_challenge/src/routing/routes.dart';
+import 'package:bento_coding_challenge/src/routing/routing.dart';
 import 'package:flutter/material.dart';
 
 class ProductCardContainer extends StatelessWidget {

@@ -10,12 +10,19 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const primaryColor = Color(0xff10365A);
     const secondaryColor = Color(0xFF56E39C);
+    const lightGreyColor = Color(0xFFE9E9E9);
     final theme = ThemeData(
       primaryColor: primaryColor,
       colorScheme: const ColorScheme.light(
         primary: primaryColor,
         secondary: secondaryColor,
         background: Colors.white,
+        surface: lightGreyColor,
+      ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
@@ -93,11 +100,26 @@ class MainApp extends StatelessWidget {
             ),
           ),
           categoryIconButton: IconButton.styleFrom(
-            backgroundColor: const Color(0xFFE9E9E9),
+            backgroundColor: lightGreyColor,
             foregroundColor: secondaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Sizes.p12),
             ),
+          ),
+          appBarIconButton: IconButton.styleFrom(
+            backgroundColor: lightGreyColor,
+            padding: const EdgeInsets.all(Sizes.p8),
+          ),
+          addToCartElevatedButton: ElevatedButton.styleFrom(
+            backgroundColor: secondaryColor,
+            foregroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(Sizes.p64),
+            ),
+            // padding: const EdgeInsets.symmetric(
+            //   vertical: Sizes.p16,
+            //   horizontal: Sizes.p48,
+            // ),
           ),
         ),
       ],

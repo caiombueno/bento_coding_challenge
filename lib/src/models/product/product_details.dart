@@ -1,4 +1,5 @@
 import 'package:bento_coding_challenge/src/models/product/product_base.dart';
+import 'package:bento_coding_challenge/src/models/product/product_tag.dart';
 
 class ProductDetails extends ProductBase {
   const ProductDetails({
@@ -31,10 +32,4 @@ class ProductDetails extends ProductBase {
         productDescription,
         tags,
       ];
-}
-
-enum ProductTag {
-  vegetarian,
-  halalFood,
-  glutenFree,
 }
