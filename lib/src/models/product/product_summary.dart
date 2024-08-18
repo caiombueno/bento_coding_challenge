@@ -1,5 +1,9 @@
 import 'package:bento_coding_challenge/src/models/product/product_base.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'product_summary.g.dart';
+
+@JsonSerializable()
 class ProductSummary extends ProductBase {
   const ProductSummary({
     required super.productId,
@@ -12,6 +16,9 @@ class ProductSummary extends ProductBase {
   });
 
   final int? productColorHex;
+
+  factory ProductSummary.fromJson(Map<String, dynamic> json) =>
+      _$ProductSummaryFromJson(json);
 
   @override
   List<Object?> get props => [
