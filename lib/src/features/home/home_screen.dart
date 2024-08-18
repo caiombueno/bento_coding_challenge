@@ -1,6 +1,7 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
 import 'package:bento_coding_challenge/src/features/home/components/components.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'components/advertising/advertising.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +9,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomeView();
+    // isolate [BlocProvider]s for testing
+    return BlocProvider<DailySpecialProductsCubit>(
+      create: (_) => DailySpecialProductsCubit()..getProductSummaryList(),
+      child: const HomeView(),
+    );
   }
 }
 
@@ -49,10 +54,7 @@ class HomeView extends StatelessWidget {
               child: ShopByCategorySection(),
             ),
             gapH24,
-            Padding(
-              padding: horizontalPadding,
-              child: TodaysSpecialSection(),
-            ),
+            Padding(padding: horizontalPadding, child: DailySpecialSection()),
           ],
         ),
       ),

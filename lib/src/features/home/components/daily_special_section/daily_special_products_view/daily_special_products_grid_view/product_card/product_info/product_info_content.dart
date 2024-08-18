@@ -1,5 +1,5 @@
 import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
-import 'package:bento_coding_challenge/src/features/home/components/todays_special_section/product_card/product_info/product_card_add_button.dart';
+import 'package:bento_coding_challenge/src/features/home/components/todays_special_section/daily_special_products_view/daily_special_products_grid_view/product_card/product_info/product_card_add_button.dart';
 import 'package:bento_coding_challenge/src/utils/context_theme.dart';
 import 'package:bento_coding_challenge/src/utils/theme_extension_util.dart';
 import 'package:bento_coding_challenge/src/widgets/product_prices_indicator.dart';
