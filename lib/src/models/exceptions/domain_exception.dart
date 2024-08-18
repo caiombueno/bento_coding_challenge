@@ -24,3 +24,19 @@ class ProductSummaryListFetchFailureException extends DomainException {
   String getMessage(BuildContext context) =>
       "Failed to fetch products.".hardcoded;
 }
+
+class NoProductDetailsFoundException extends DomainException {
+  const NoProductDetailsFoundException() : super('no-product-details-found');
+
+  @override
+  String getMessage(BuildContext context) => "No product found.".hardcoded;
+}
+
+class ProductDetailsFetchFailureException extends DomainException {
+  const ProductDetailsFetchFailureException()
+      : super('product-details-fetch-failure');
+
+  @override
+  String getMessage(BuildContext context) =>
+      "Failed to fetch product details.".hardcoded;
+}

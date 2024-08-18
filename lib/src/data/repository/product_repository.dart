@@ -22,4 +22,22 @@ class ProductRepository {
       (productSummaries) => Right(productSummaries),
     );
   }
+
+  Future<Either<DomainException, ProductDetails>> getProductDetails(
+    ProductId productId,
+  ) async {
+    final result = await _productDataSource.getProductDetails(productId);
+
+    return result.fold(
+      (exception) {
+        final domainException = switch (exception) {
+          EmptyResultException _ => const NoProductDetailsFoundException(),
+          _ => const ProductDetailsFetchFailureException(),
+        };
+
+        return Left(domainException);
+      },
+      (productDetails) => Right(productDetails),
+    );
+  }
 }
