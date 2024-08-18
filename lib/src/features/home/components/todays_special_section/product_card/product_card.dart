@@ -13,7 +13,7 @@ class ProductCard extends StatelessWidget {
         backgroundColorHexValue: product.productColorHex,
         child: ProductCardContent(
           fullPrice: product.fullPrice,
-          priceWithDiscount: product.priceWithDiscount,
+          salePrice: product.salePrice,
           productName: product.productName,
           rating: product.overallRating,
           productImageAssetPath: product.productImageAssetPath,

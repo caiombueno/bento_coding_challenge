@@ -22,7 +22,7 @@ abstract class ProductBase extends Equatable {
   final String? productImageAssetPath;
   final double? overallRating;
 
-  double? get priceWithDiscount {
+  double? get salePrice {
     final discountPercentage = this.discountPercentage;
     return (discountPercentage == null)
         ? null

@@ -11,11 +11,11 @@ class ProductInfoContent extends StatelessWidget {
     super.key,
     required this.productName,
     required this.fullPrice,
-    required this.priceWithDiscount,
+    required this.salePrice,
   });
   final String productName;
   final double fullPrice;
-  final double? priceWithDiscount;
+  final double? salePrice;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class ProductInfoContent extends StatelessWidget {
                   flex: 4,
                   child: _ProductPrices(
                     fullPrice: fullPrice,
-                    priceWithDiscount: priceWithDiscount,
+                    salePrice: salePrice,
                   ),
                 ),
                 const Flexible(child: ProductCardAddButton()),
@@ -61,24 +61,22 @@ class _ProductNameText extends StatelessWidget {
       );
 }
 
-/// Show the price with discount in evidence and the full price with a strikethrough.
+/// Show the sale price in evidence and the full price with a strikethrough.
 /// If there is no discount, show only the full price (without strikethrough).
 class _ProductPrices extends StatelessWidget {
-  const _ProductPrices({required this.fullPrice, this.priceWithDiscount});
+  const _ProductPrices({required this.fullPrice, this.salePrice});
   final double fullPrice;
-  final double? priceWithDiscount;
+  final double? salePrice;
 
   @override
   Widget build(BuildContext context) {
-    final priceWithDiscount = this.priceWithDiscount;
+    final salePrice = this.salePrice;
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Flexible(
-            flex: 1,
-            child: _CurrentPriceText(
-                currentPrice: priceWithDiscount ?? fullPrice)),
-        if (priceWithDiscount != null) ...[
+            flex: 1, child: _SalePriceText(salePrice: salePrice ?? fullPrice)),
+        if (salePrice != null) ...[
           gapW4,
           Flexible(child: _StrikethroughFullPriceText(fullPrice: fullPrice)),
         ],
@@ -98,13 +96,13 @@ class _StrikethroughFullPriceText extends StatelessWidget {
       );
 }
 
-class _CurrentPriceText extends StatelessWidget {
-  const _CurrentPriceText({required this.currentPrice});
-  final double currentPrice;
+class _SalePriceText extends StatelessWidget {
+  const _SalePriceText({required this.salePrice});
+  final double salePrice;
 
   @override
   Widget build(BuildContext context) => Text(
-        currentPrice.formattedPrice,
+        salePrice.formattedPrice,
         style: context.theme.textTheme.titleMedium,
       );
 }

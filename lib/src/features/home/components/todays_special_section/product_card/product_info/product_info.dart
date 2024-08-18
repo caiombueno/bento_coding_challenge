@@ -7,18 +7,18 @@ class ProductInfo extends StatelessWidget {
     super.key,
     required this.productName,
     required this.fullPrice,
-    required this.priceWithDiscount,
+    required this.salePrice,
   });
   final String productName;
   final double fullPrice;
-  final double? priceWithDiscount;
+  final double? salePrice;
 
   @override
   Widget build(BuildContext context) => ProductInfoContainer(
         child: ProductInfoContent(
           productName: productName,
           fullPrice: fullPrice,
-          priceWithDiscount: priceWithDiscount,
+          salePrice: salePrice,
         ),
       );
 }

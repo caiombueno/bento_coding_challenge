@@ -8,13 +8,13 @@ class ProductCardContent extends StatelessWidget {
     super.key,
     this.productName,
     required this.fullPrice,
-    this.priceWithDiscount,
+    this.salePrice,
     this.rating,
     this.productImageAssetPath,
   });
   final String? productName;
   final double fullPrice;
-  final double? priceWithDiscount;
+  final double? salePrice;
   final double? rating;
   final String? productImageAssetPath;
 
@@ -43,7 +43,7 @@ class ProductCardContent extends StatelessWidget {
                 flex: 3,
                 child: ProductInfo(
                   fullPrice: fullPrice,
-                  priceWithDiscount: priceWithDiscount,
+                  salePrice: salePrice,
                   productName: name,
                 ),
               ),
