@@ -22,6 +22,7 @@ class AvocadoAdvertising extends StatelessWidget {
           Text(
             "FRESH AVOCADO UP TO 15% OFF".hardcoded,
             style: textTheme.titleLarge,
+            maxLines: 3,
           ),
         ],
       ),
