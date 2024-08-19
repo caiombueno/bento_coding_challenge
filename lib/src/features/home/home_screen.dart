@@ -44,7 +44,7 @@ class HomeView extends StatelessWidget {
               padding: horizontalPadding,
               advertisings: [
                 AvocadoAdvertising(),
-                AvocadoAdvertising(),
+                OrangeAdvertising(),
                 AvocadoAdvertising(),
               ],
             ),

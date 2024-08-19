@@ -21,7 +21,7 @@ class FakeProductDataSource implements ProductDataSource {
       },
       {
         "productId": '2',
-        "productName": "Organic Fresh Green Cabbage",
+        "productName": "Green Cabbage",
         "fullPrice": 8.15,
         "discountPercentage": 0.2,
         "productImageAssetPath": cabbagePngAssetPath,
@@ -47,7 +47,7 @@ class FakeProductDataSource implements ProductDataSource {
     },
     "2": {
       "productId": '2',
-      "productName": "Organic Fresh Green Cabbage",
+      "productName": "Green Cabbage",
       "fullPrice": 8.15,
       "discountPercentage": 0.2,
       "productImageAssetPath": cabbagePngAssetPath,
