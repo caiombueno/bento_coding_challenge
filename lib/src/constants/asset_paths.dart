@@ -4,6 +4,7 @@ const localShopSvgAssetPath = 'assets/svg/local_shop.svg';
 const avocadoPngAssetPath = 'assets/images/avocado.png';
 const orangePngAssetPath = 'assets/images/orange.png';
 const cabbagePngAssetPath = 'assets/images/cabbage.png';
+const fruitsLoadingLottieAssetPath = 'assets/animations/orange.json';
 
 class ProductCategoriesSvgAssetPaths {
   static const _productCaregoritesAssetFolderPath =

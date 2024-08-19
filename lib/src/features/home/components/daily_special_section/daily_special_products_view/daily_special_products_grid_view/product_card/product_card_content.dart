@@ -66,5 +66,8 @@ class _ProductImage extends StatelessWidget {
   final String assetPath;
 
   @override
-  Widget build(BuildContext context) => Image.asset(assetPath);
+  Widget build(BuildContext context) => Hero(
+        tag: assetPath,
+        child: Image.asset(assetPath),
+      );
 }

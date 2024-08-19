@@ -8,7 +8,10 @@ class ProductDetailsImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final productImageAssetPath = this.productImageAssetPath;
     return (productImageAssetPath != null)
-        ? Image.asset(productImageAssetPath)
+        ? Hero(
+            tag: productImageAssetPath,
+            child: Image.asset(productImageAssetPath),
+          )
         : const SizedBox();
   }
 }

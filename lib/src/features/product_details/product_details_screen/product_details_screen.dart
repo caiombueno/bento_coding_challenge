@@ -2,37 +2,58 @@ import 'package:bento_coding_challenge/src/constants/app_sizes.dart';
 import 'package:bento_coding_challenge/src/features/product_details/components/components.dart';
 import 'package:bento_coding_challenge/src/features/product_details/product_details_screen/state_management/product_details_cubit.dart';
 import 'package:bento_coding_challenge/src/models/models.dart';
+import 'package:bento_coding_challenge/src/widgets/app_animated_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key, required this.productId});
+  const ProductDetailsScreen({
+    super.key,
+    required this.productId,
+    this.imageAssetPath,
+  });
   final ProductId productId;
+  final String? imageAssetPath;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProductDetailsCubit>(
       create: (context) => ProductDetailsCubit()..getProductDetails(productId),
-      child: const ProductDetailsView(),
+      child: ProductDetailsView(imageAssetPath: imageAssetPath),
     );
   }
 }
 
 class ProductDetailsView extends StatelessWidget {
-  const ProductDetailsView({super.key});
+  const ProductDetailsView({super.key, this.imageAssetPath});
+  final String? imageAssetPath;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
-      builder: (_, state) {
-        return switch (state) {
-          ProductDetailsLoading _ => const _ProductDetailsLoadingView(),
-          ProductDetailsError errorState =>
-            _ProductDetailsErrorView(errorState.exception),
-          ProductDetailsLoaded loadedState =>
-            _ProductDetailsLoadedView(loadedState.productDetails),
-        };
-      },
+    return ProductDetailsScaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+                child:
+                    ProductDetailsImage(productImageAssetPath: imageAssetPath)),
+            BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
+              builder: (_, state) {
+                return switch (state) {
+                  ProductDetailsLoading _ => const _ProductDetailsLoadingView(),
+                  ProductDetailsError errorState =>
+                    _ProductDetailsErrorView(errorState.exception),
+                  ProductDetailsLoaded loadedState =>
+                    _ProductDetailsLoadedView(loadedState.productDetails),
+                };
+              },
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: const ProductDetailsBottomSheet(),
     );
   }
 }
@@ -47,50 +68,29 @@ class _ProductDetailsLoadedView extends StatelessWidget {
     final shopName = productDetails.shopName;
     final tags = productDetails.tags;
     final description = productDetails.productDescription;
-    return ProductDetailsScaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Flexible(
-              child: ProductDetailsImage(
-                productImageAssetPath: productDetails.productImageAssetPath,
-              ),
-            ),
-            Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  gapH12,
-                  ProductNameAndRatingIndicatorRow(
-                    productName: productDetails.productName,
-                    productRating: productDetails.overallRating,
-                  ),
-                  if (shopName != null) ...[
-                    gapH12,
-                    ProductDetailsShopText(shopName: shopName),
-                  ],
-                  if (tags.isNotEmpty) ...[
-                    gapH12,
-                    ProductDetailsTagsSection(tags: tags),
-                  ],
-                  if (description != null) ...[
-                    gapH12,
-                    ProductDetailsDescriptionSection(
-                      description: description,
-                    ),
-                  ],
-                ],
-              ),
-            ),
-          ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        gapH12,
+        ProductNameAndRatingIndicatorRow(
+          productName: productDetails.productName,
+          productRating: productDetails.overallRating,
         ),
-      ),
-      bottomNavigationBar: ProductDetailsBottomSheet(
-        fullPrice: productDetails.fullPrice,
-        salePrice: productDetails.salePrice,
-      ),
+        if (shopName != null) ...[
+          gapH12,
+          ProductDetailsShopText(shopName: shopName),
+        ],
+        if (tags.isNotEmpty) ...[
+          gapH12,
+          ProductDetailsTagsSection(tags: tags),
+        ],
+        if (description != null) ...[
+          gapH12,
+          ProductDetailsDescriptionSection(
+            description: description,
+          ),
+        ],
+      ],
     );
   }
 }
@@ -100,7 +100,13 @@ class _ProductDetailsLoadingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    return const Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Center(
+        child: FractionallySizedBox(
+            widthFactor: 0.5, child: AppAnimatedLoadingIndicator()),
+      ),
+    );
   }
 }
 
@@ -110,10 +116,8 @@ class _ProductDetailsErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(exception.getMessage(context)),
-      ),
+    return Center(
+      child: Text(exception.getMessage(context)),
     );
   }
 }

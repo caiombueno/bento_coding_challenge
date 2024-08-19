@@ -41,10 +41,19 @@ class AccountRoute extends GoRouteData {
 
 @TypedGoRoute<ProductDetailsRoute>(path: '/product/:productId')
 class ProductDetailsRoute extends GoRouteData {
-  const ProductDetailsRoute({required this.productId});
+  const ProductDetailsRoute({
+    required this.productId,
+    this.$extra,
+  });
   final ProductId productId;
+
+  /// The image asset path of the product. This is an extra parameter that is passed to the route.
+  final String? $extra;
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
-      ProductDetailsScreen(productId: productId);
+      ProductDetailsScreen(
+        productId: productId,
+        imageAssetPath: $extra,
+      );
 }

@@ -5,15 +5,10 @@ import 'package:bento_coding_challenge/src/widgets/product_prices_indicator.dart
 import 'package:flutter/cupertino.dart';
 
 class ProductDetailsPriceSection extends StatelessWidget {
-  const ProductDetailsPriceSection({
-    super.key,
-    required this.fullPrice,
-    required this.salePrice,
-  });
-
+  const ProductDetailsPriceSection(
+      {super.key, required this.fullPrice, this.salePrice});
   final double fullPrice;
   final double? salePrice;
-
   @override
   Widget build(BuildContext context) {
     return Column(

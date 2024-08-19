@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:bento_coding_challenge/src/app/app.dart';
 import 'package:bento_coding_challenge/service_location.dart' as sl;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,6 +12,8 @@ void main() {
 
   // https://docs.flutter.dev/testing/errors
   _registerErrorHandlers();
+
+  timeDilation = 2;
 
   runApp(const MainApp());
 }

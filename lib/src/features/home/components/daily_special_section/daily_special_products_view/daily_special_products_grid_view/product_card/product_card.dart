@@ -8,15 +8,19 @@ class ProductCard extends StatelessWidget {
   final ProductSummary product;
 
   @override
-  Widget build(BuildContext context) => ProductCardContainer(
-        productId: product.productId,
-        backgroundColorHexValue: product.productColorHex,
-        child: ProductCardContent(
-          fullPrice: product.fullPrice,
-          salePrice: product.salePrice,
-          productName: product.productName,
-          rating: product.overallRating,
-          productImageAssetPath: product.productImageAssetPath,
-        ),
-      );
+  Widget build(BuildContext context) {
+    final imageAssetPath = product.productImageAssetPath;
+    return ProductCardContainer(
+      productId: product.productId,
+      imageAssetPath: imageAssetPath,
+      backgroundColorHexValue: product.productColorHex,
+      child: ProductCardContent(
+        fullPrice: product.fullPrice,
+        salePrice: product.salePrice,
+        productName: product.productName,
+        rating: product.overallRating,
+        productImageAssetPath: imageAssetPath,
+      ),
+    );
+  }
 }

@@ -10,15 +10,19 @@ class ProductCardContainer extends StatelessWidget {
     this.child,
     this.backgroundColorHexValue,
     required this.productId,
+    this.imageAssetPath,
   });
   final Widget? child;
   final int? backgroundColorHexValue;
   final ProductId productId;
+  final String? imageAssetPath;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => ProductDetailsRoute(productId: productId).push(context),
+      onTap: () =>
+          ProductDetailsRoute(productId: productId, $extra: imageAssetPath)
+              .push(context),
       child: AspectRatio(
         aspectRatio: 1 / 1.25,
         child: Container(
